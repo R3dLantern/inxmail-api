@@ -1,6 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 import * as mailingList from './routes/mailing-list';
+import * as mailing from './routes/mailing';
 import { ListSettingsBody, ListSettingsName, MailingList, MailingListBody, MailingListCollection, MailingListCount } from "./types/mailing-list";
+import { Mailing, MailingCollection, MailingCollectionParams, MailingParams } from "./types/mailing";
 
 class InxmailAPI {
   #client: AxiosInstance;
@@ -49,6 +51,14 @@ class InxmailAPI {
     body: ListSettingsBody
   ): Promise<void> {
     await mailingList.updateSettings(this.#client, id, settingName, body);
+  }
+
+  async getMailing(id: number, params?: MailingParams): Promise<Mailing> {
+    return mailing.get(this.#client, id, params);
+  }
+
+  async getMailingCollection(params?: MailingCollectionParams): Promise<MailingCollection> {
+    return mailing.getList(this.#client, params);
   }
 }
 

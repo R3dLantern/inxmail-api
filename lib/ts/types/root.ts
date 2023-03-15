@@ -1,3 +1,6 @@
+import * as Yup from 'yup';
+import { formatTimestamp } from '../util/date-time';
+
 export interface Link {
   readonly href: string;
 }
@@ -16,3 +19,16 @@ export interface LinksCollection {
 export interface BaseReponse {
   readonly _links: LinksCollection;
 }
+
+export const BooleanAsStringSchema = Yup
+  .boolean()
+  .transform((val: boolean) => val ? 'true' : 'false');
+
+export const DateAsInxmailTimestampSchema = Yup
+  .date()
+  .transform((val: Date) => formatTimestamp(val));
+
+export const IntegerListAsStringSchema = Yup
+  .array()
+  .of(Yup.number().integer().required())
+  .transform((val: number[]) => val.join(','));
