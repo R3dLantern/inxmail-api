@@ -1,0 +1,36 @@
+{
+  "name": "inxmail-api",
+  "version": "0.1.0",
+  "description": "Javascript / Typescript API abstraction layer for Inxmail",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/R3dLantern/inxmail-api.git"
+  },
+  "keywords": [
+    "inxmail",
+    "api"
+  ],
+  "author": {
+    "name": "Leon Willens",
+    "email": "lvilents@gmail.com",
+    "url": "https://github.com/R3dLantern"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/R3dLantern/inxmail-api/issues"
+  },
+  "homepage": "https://github.com/R3dLantern/inxmail-api#readme",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "moment": "^2.29.4",
+    "yup": "^1.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "typescript": "^4.9.5"
+  }
+}
