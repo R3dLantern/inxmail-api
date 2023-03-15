@@ -1,5 +1,7 @@
 import { AxiosResponse, AxiosInstance } from "axios";
 import {
+  ListSettingsBody,
+  ListSettingsName,
   MailingList,
   MailingListBody,
   MailingListCollection,
@@ -58,6 +60,15 @@ async function getCount(_axios: AxiosInstance, id: number): Promise<MailingListC
   return data;
 }
 
+async function updateSettings(
+  _axios: AxiosInstance,
+  id: number,
+  settingName: ListSettingsName,
+  body: ListSettingsBody,
+): Promise<void> {
+  await _axios.put(`${PATH}/${id}/settings/${settingName}`, body);
+}
+
 export {
   get,
   getList,
@@ -65,5 +76,6 @@ export {
   updateOne,
   deleteOne,
   getCount,
+  updateSettings,
 }
 

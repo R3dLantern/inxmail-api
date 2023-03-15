@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import * as mailingList from './routes/mailing-list';
-import { MailingList, MailingListBody, MailingListCollection, MailingListCount } from "./types/mailing-list";
+import { ListSettingsBody, ListSettingsName, MailingList, MailingListBody, MailingListCollection, MailingListCount } from "./types/mailing-list";
 
 class InxmailAPI {
   #client: AxiosInstance;
@@ -41,6 +41,14 @@ class InxmailAPI {
 
   async getMailingListRecipientCount(id: number): Promise<MailingListCount> {
     return mailingList.getCount(this.#client, id);
+  }
+
+  async updateMailingListSetting(
+    id: number,
+    settingName: ListSettingsName,
+    body: ListSettingsBody
+  ): Promise<void> {
+    await mailingList.updateSettings(this.#client, id, settingName, body);
   }
 }
 

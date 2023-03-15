@@ -43,3 +43,20 @@ const MailingListBodySchema = Yup.object({
 });
 
 export type MailingListBody = ReturnType<typeof MailingListBodySchema.validateSync>;
+
+export interface ListSettings {
+  TrackingPermissionDetachedFromMembership: boolean;
+}
+const settings: ListSettings = {
+  TrackingPermissionDetachedFromMembership: true,
+};
+
+const ListSettingsBodySchema = Yup.object({
+  value: Yup.string().required().oneOf(["true", "false"]),
+});
+
+const ListSettingsNameSchema = Yup.string().required().oneOf(Object.keys(settings));
+
+export type ListSettingsName = ReturnType<typeof ListSettingsNameSchema.validateSync>;
+
+export type ListSettingsBody = ReturnType<typeof ListSettingsBodySchema.validateSync>;
